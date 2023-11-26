@@ -1,16 +1,16 @@
 [
     {
         "numero": 101,
-        "tipo": "individual",
-        "descripcion": "Habitación individual con vista dsaaaaaa dsfgdfsal jardín.",
+        "tipo": "Single",
+        "descripcion": "Habitación individual con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
         "precio_por_noche": 100.0,
         "disponible": true,
         "src":""
     },
     {
         "numero": 201,
-        "tipo": "doble",
-        "descripcion": "Habitación doble con balcóngfdsgfdsgdfsgsdfgdfsgdfsgsdf y vista al mar.",
+        "tipo": "Single doble",
+        "descripcion": "Habitación para dos personas con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
         "precio_por_noche": 150.0,
         "disponible": true,
         "src":""
@@ -18,8 +18,8 @@
     },
     {
         "numero": 2011,
-        "tipo": "doble",
-        "descripcion": "Habitación doble con balcón y gfdsgdfsgsdfgdfsgsdfgdsfgdfs al mar.",
+        "tipo": "Single cuádruple",
+        "descripcion": "Habitación para cuatro personas con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
         "precio_por_noche": 150.0,
         "disponible": true,
         "src":""
@@ -27,8 +27,8 @@
     },
     {
         "numero": 2021,
-        "tipo": "doble",
-        "descripcion": "Lorem Ipsum es simple entas y archivos de texto. Lorem Ipsum ha siar.",
+        "tipo": "Single quíntuple",
+        "descripcion": "Habitación para cinco personas con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
         "precio_por_noche": 150.0,
         "disponible": true,
         "src":""
@@ -36,8 +36,8 @@
     },
     {
         "numero": 2031,
-        "tipo": "doble",
-        "descripcion": "Habitación doble con balcón y vista al mar.",
+        "tipo": "Suite junior",
+        "descripcion": "Habitación con servicio de jacuzzi con hidromasaje, 2 ambientes. Incluye los servicios complentarios.",
         "precio_por_noche": 150.0,
         "disponible": true,
         "src":""
@@ -45,8 +45,8 @@
     },
     {
         "numero": 2041,
-        "tipo": "doble",
-        "descripcion": "Habitación doble con balcón y vista al mar.",
+        "tipo": "Suite senior sin vista panorámica",
+        "descripcion": "Habitación con servicio de jacuzzi con hidromasaje, 2 ambientes. Incluye los servicios complentarios.",
         "precio_por_noche": 150.0,
         "disponible": true,
         "src":""
@@ -54,8 +54,8 @@
     },
     {
         "numero": 2015,
-        "tipo": "doble",
-        "descripcion": "Habitación doble con balcón y vista al mar.",
+        "tipo": "Suite senior con vista panorámica",
+        "descripcion": "Habitación con servicio de jacuzzi con hidromasaje, 2 ambientes. Incluye los servicios complentarios.",
         "precio_por_noche": 150.0,
         "disponible": true,
         "src":""
