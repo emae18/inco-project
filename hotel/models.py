@@ -16,3 +16,6 @@ class Habitacion(models.Model):
 
     def __str__(self):
         return f'Habitación {self.numero} - {self.tipo}'
+
+class Filter(models.Model):
+    name = models.TextField()

@@ -1,70 +1,55 @@
+{%load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Hotel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Hotel</title>
+  <link href="{% static 'styles.css' %}" rel="stylesheet"  type="text/css" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
-<body>
 
-    <ul class="nav d-flex flex-md-row justify-content-end nav">
-        <li class="nav-item align-self-start me-auto">
-          <a class="nav-link active" aria-current="page" href="#">LOGO</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Reservas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Servicios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">Nosotros</a>
-        </li>
-      </ul>
-<div class="d-flex flex-md-row justify-content-between w-100" style="padding: 20px;">
+<body>
+  <ul class="btn-primary nav d-flex flex-md-row justify-content-end ">
+    <li class="nav-item align-self-start me-auto">
+      <a class="text-white nav-link active" aria-current="page" href="/hotel">{{titulo}}</a>
+    </li>
+    <li class="nav-item">
+      <a class="text-white nav-link active" aria-current="page" href="/hotel">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="text-white nav-link" href="/hotel/reservas">Reservas</a>
+    </li>
+    <li class="nav-item">
+      <a class="text-white nav-link" href="/hotel/servicios">Servicios</a>
+    </li>
+    <li class="nav-item">
+      <a class=" text-white nav-link">Nosotros</a>
+    </li>
+  </ul>
+  <div class="d-flex flex-md-row justify-content-between w-100" style="padding: 20px;">
     <div class="card col-md-3" style="max-height: 75vh ;">
-        <img style="max-width: 55% !important;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqe_JL_5IwJ4phYqrNLNl9reBX7alsPeQa8g&usqp=CAU" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Hotel Termas de Reyes</h5>
-          <p class="" style="font-size: .60em !important;">
-            Se encuentra enclavado en la quebrada del mismo nombre a solo 17km de la ciudad de San Salvador.- Único hotel termal de la Provincia, con 40 habitaciones de lujo, y con distintas opciones termales en sus tratamientos.-En su tarifa, por estadías de mas de 3 noches, posee incluido el traslado al aeropuerto in / out.-Priorizando el descanso y la recomposicion de cuerpo y espíritu, no aceptamos menores de 16 años.-
-          </p>
-          <a href="#" class="btn btn-primary">RESERVAR</a>
-        </div>
+      <img style="max-width: 55% !important;"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqe_JL_5IwJ4phYqrNLNl9reBX7alsPeQa8g&usqp=CAU"
+        class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Hotel Termas de Reyes</h5>
+        <p class="" style="font-size: .60em !important;">
+          Se encuentra enclavado en la quebrada del mismo nombre a solo 17km de la ciudad de San Salvador.- Único hotel
+          termal de la Provincia, con 40 habitaciones de lujo, y con distintas opciones termales en sus tratamientos.-En
+          su tarifa, por estadías de mas de 3 noches, posee incluido el traslado al aeropuerto in / out.-Priorizando el
+          descanso y la recomposicion de cuerpo y espíritu, no aceptamos menores de 16 años.-
+        </p>
+        <a href="#" class="btn btn-primary">RESERVAR</a>
+      </div>
     </div>
-        <img class="col-md-9 border border-2" src="https://www.argentinaturismo.com.ar/hoteltermasdereyes/img/11.jpg"/>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <img class="col-md-9 border border-2" src="https://www.argentinaturismo.com.ar/hoteltermasdereyes/img/11.jpg" />
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
