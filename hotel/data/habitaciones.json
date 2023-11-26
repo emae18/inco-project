@@ -1,0 +1,16 @@
+[
+    {
+        "numero": 101,
+        "tipo": "individual",
+        "descripcion": "Habitación individual con vista al jardín.",
+        "precio_por_noche": 100.0,
+        "disponible": true
+    },
+    {
+        "numero": 201,
+        "tipo": "doble",
+        "descripcion": "Habitación doble con balcón y vista al mar.",
+        "precio_por_noche": 150.0,
+        "disponible": true
+    }
+]

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="nav d-flex flex-md-row justify-content-end nav">
+        <li class="nav-item align-self-start me-auto">
+            <a class="nav-link active" aria-current="page" href="#">{{titulo}}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Reservas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Servicios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">Nosotros</a>
+        </li>
+    </ul>
+    <div class="d-flex flex-md-row justify-content-between w-100" style="padding: 20px;">
+        <div class="col-md-3">
+            <h6>Filtrar por</h6>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+                    <label class="form-check-label" for="firstCheckbox">Electrodomestico</label>
+                </li>
+                <li class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckbox">
+                    <label class="form-check-label" for="secondCheckbox">Second checkbox</label>
+                </li>
+                <li class="list-group-item">
+                    <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckbox">
+                    <label class="form-check-label" for="thirdCheckbox">Third checkbox</label>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 d-flex flex-column">
+            <div class="d-flex flex-row w-100">
+                <div class="col-md-3 border rounded rounded-4 p-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Nativo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Exterior
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Extranjero
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+                    <label>Precio</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Mínimo" aria-label="Username">
+                        <span class="input-group-text">-</span>
+                        <input type="text" class="form-control" placeholder="Máximo" aria-label="Server">
+                      </div>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-between">
+                <div class="card-deck d-flex flex-row justify-content-between g-3">
+                    {% for habitacion in habitaciones %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ habitacion.tipo }}</h5>
+                            <p class="card-text">{{ habitacion.descripcion }}</p>
+                            <p class="card-text"><strong>Precio por noche:</strong> ${{ habitacion.precio_por_noche }}
+                            </p>
+                            <p class="card-text"><strong>Disponible:</strong> {{ habitacion.disponible }}</p>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+
+                {% if not habitaciones %}
+                <p class="mt-4">No hay habitaciones disponibles en este momento.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
