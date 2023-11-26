@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from reglas.rules import *
-from .models import Habitacion,Filter
+from .models import Habitacion,Filter,RoomType
 import json
 
 
@@ -15,7 +15,10 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     Filter.objects.all().delete()
     load_filters()
     filters= Filter.objects.all()
-    return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,'titulo':'HOTEL MICA' })
+    RoomType.objects.all().delete()
+    load_room_types()
+    roomTypes= RoomType.objects.all()
+    return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'titulo':'HOTEL MICA' })
 
 def filterRules(request):
     engine = ReservarHabitacion()
@@ -41,3 +44,12 @@ def load_filters():
     print(json)
     for filterd in filters_json:
         Filter.objects.create(**filterd)
+def load_room_types():
+    json_data='hotel/data/room_types.json'
+    with open(json_data,'r') as file:
+        filters_json=json.load(file)
+    print(json)
+    for filterd in filters_json:
+        id_room = filterd.get('id')
+        if not RoomType.objects.filter(id=id_room).exists():
+            RoomType.objects.create(**filterd)

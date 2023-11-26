@@ -13,9 +13,13 @@ class Habitacion(models.Model):
     descripcion = models.TextField()
     precio_por_noche = models.DecimalField(max_digits=10, decimal_places=2)
     disponible = models.BooleanField(default=True)
-
+    src=models.TextField(default='')
     def __str__(self):
         return f'Habitación {self.numero} - {self.tipo}'
 
 class Filter(models.Model):
+    name = models.TextField()
+    
+class RoomType(models.Model):
+    id = models.IntegerField(primary_key=True,unique=True)
     name = models.TextField()
