@@ -18,11 +18,11 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     return render(request, 'reservas.html', {'habitaciones': habitaciones, 'titulo':'HOTEL MICA' })
 
 def filterRules(request):
-    engine = ReservarHabitacion(0)
+    engine = ReservarHabitacion()
     engine.reset()
     engine.declare(Residencia(tipo="nativo"))
     engine.run()
-    contenido_html='a'
+    contenido_html=engine.resultados["residencia"]
     return HttpResponse(contenido_html)
 
 def cargar_habitaciones_desde_json(json_file_path):
