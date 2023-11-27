@@ -1,9 +1,9 @@
 {%load static %}
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Hotel</title>
     <link href="{% static 'styles.css' %}" rel="stylesheet" type="text/css" crossorigin="anonymous">
@@ -30,73 +30,83 @@
         </li>
     </ul>
     <div class="d-flex flex-md-row justify-content-between w-100" style="padding: 20px;">
-        <div class="col-md-3 card">
+        <div class="col-md-2 card">
             <h6 class="bgh-secondary p-1 m-0">Servicios</h6>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush w-100">
                 {% for filter in filters %}
-                <li class="list-group-item">
+                <li class="list-group-item w-100">
                     <input class="form-check-input me-1" type="checkbox" value="" id="{{filter.name}}">
-                    <label class="form-check-label" for="{{filter.name}}">{{filter.name}}</label>
+                    <label class="text-truncate form-check-label" style="max-width: 80%;"
+                        for="{{filter.name}}">{{filter.name}}</label>
                 </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-md-9 d-flex flex-column ">
+        <div class="col-md-10 d-flex flex-column ">
             <div class="d-flex flex-row justify-content-evenly">
-                <div class="col-md-2 border rounded rounded-4 p-1 d-flex flex-column justify-content-center">
-                    <label>Residencia</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Nativo
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                            checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Exterior
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
-                            checked>
-                        <label class="form-check-label" for="flexRadioDefault3">
-                            Extranjero
-                        </label>
-                    </div>
-                </div>
-                <div class="col-md-5 px-1">
-                    <div class="input-group mb-3 w-100 d-flex flex-md-row justify-content-between">
-                        <label class="w-50">Jovenes - Adultos</label>
-                        <div class="w-50 d-flex flex-md-row">
-                            <span class="btn btn-secondary border border-white" id="">-</span>
-                            <input type="text" maxlength="2" class="form-control" placeholder="0" style="width: 30%;">
-                            <span class="btn btn-secondary border border-white" id="">+</span>
+                <div class="col-md-2  d-flex flex-column justify-content-start align-items-center">
+                    <div class="" style="width: 80%;">
+                        <h6 class="bgh-secondary p-1 m-0">Residencia</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Nativo
+                            </label>
                         </div>
-                    </div>
-                    <div class="input-group mb-3 w-100 d-flex flex-md-row justify-content-between">
-                        <label class="w-50">Adultos mayores</label>
-                        <div class="w-50 d-flex flex-md-row">
-                            <span class="btn btn-secondary border border-white" id="">-</span>
-                            <input type="text" maxlength="2" class="form-control" placeholder="0" style="width: 30%;">
-                            <span class="btn btn-secondary border border-white" id="">+</span>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Exterior
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                                checked>
+                            <label class="form-check-label" for="flexRadioDefault3">
+                                Extranjero
+                            </label>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <label>Precio</label>
-                    <div class="input-group mb-3 d-flex flex-column">
-                        <input type="text" maxlength="10" class="form-control w-100" placeholder="Desde"
+                <div class="col-md-4 px-1 d-flex flex-column justify-content-start align-items-center">
+                    <div style="width: 80%;">
+                        <h6 class="bgh-secondary p-1 m-0">Cantidad</h6>
+                        <div class="input-group ms-1 mb-1 w-100 d-flex flex-md-row justify-content-between">
+                            <label class="w-50">Jovenes - Adultos</label>
+                            <div class="w-50 d-flex flex-md-row">
+                                <span class="btn bgh-primary border border-black" id="">-</span>
+                                <input type="text text-center" maxlength="2" class="form-control" placeholder="0"
+                                    style="width: 30%;">
+                                <span class="btn bgh-primary border border-black" id="">+</span>
+                            </div>
+                        </div>
+                        <div class="input-group ms-1 mb-1 w-100 d-flex flex-md-row justify-content-between">
+                            <label class="w-50">Adultos mayores</label>
+                            <div class="w-50 d-flex flex-md-row">
+                                <span class="btn bgh-primary border border-black" id="">-</span>
+                                <input type="text" maxlength="2" class="form-control" placeholder="0"
+                                    style="width: 30%;">
+                                <span class="btn bgh-primary border border-black" id="">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex flex-column justify-content-start align-items-center">
+                    <div class="" style="width: 80%;">
+                        <h6 class="bgh-secondary p-1 m-0">Precio</h6>
+                        <div class="input-group mb-3 d-flex flex-column">
+                            <input type="text" maxlength="10" class="form-control w-100" placeholder="Desde"
                             aria-label="Username">
-                        <input type="text" maxlength="10" class="form-control w-100" placeholder="Hasta"
+                            <input type="text" maxlength="10" class="form-control w-100" placeholder="Hasta"
                             aria-label="Server">
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div>
-                        <h6>Tipo de habitación</h6>
-                        <div class="w-100 select border border-3 rounded">
+                        <h6 class="bgh-secondary p-1 m-0">Tipo de habitación</h6>
+                        <div class="w-100 select border border-3 mt-1 rounded">
                             <select aria-placeholder="Select a Type">
                                 {% for type in roomTypes %}
                                 <option value="{{type.id}}">{{type.name}}</option>
@@ -106,16 +116,20 @@
                     </div>
                 </div>
             </div>
+            <h6 class="bgh-secondary p-1 ms-3 w-100">Habitaciones</h6>
             <div class="d-flex flex-row justify-content-between w-100 mt-2">
+                <div class="vr ms-3"></div>
                 <div class="card-deck d-flex flex-row flex-wrap justify-content-evenly g-3">
                     {% for habitacion in habitaciones %}
                     <div class="card mb-4" style="max-width: 400px;max-height: 500px;">
                         <div class="card-header">
                             <h5 class="card-title">{{ habitacion.tipo }}</h5>
                         </div>
-                        <div class="card-body">
-                            <img style="max-width: 100%;" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1"/>
-                            <p class="card-text">{{ habitacion.descripcion }}</p>
+                        <div class="card-body h-75">
+                            <img style="max-width: 100%;"
+                                src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1" />
+                            <p class="card-text h-auto" style="max-height: --fill-content;overflow-y: scroll;">
+                                {{ habitacion.descripcion }}</p>
                         </div>
                         <div class="card-footer d-flex flex-row justify-content-end">
                             <a href="#" class="btn btn-primary ">RESERVAR</a>
