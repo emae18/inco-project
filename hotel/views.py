@@ -21,7 +21,15 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     load_room_types()
     roomTypes= RoomType.objects.all()
     return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'location':'activeh' },content_type='text/html; charset=utf-8')
+
+
 def GetHabitaciones(request, json_file_path='hotel/data/habitaciones.json'):
+    with open(json_file_path, 'r',encoding='utf-8') as file:
+        habitaciones_data = json.load(file)
+    data = {'data': habitaciones_data}
+    return JsonResponse(data)
+
+def GetTiposHab(request, json_file_path='hotel/data/room_types.json'):
     with open(json_file_path, 'r',encoding='utf-8') as file:
         habitaciones_data = json.load(file)
     data = {'data': habitaciones_data}
@@ -30,10 +38,11 @@ def GetHabitaciones(request, json_file_path='hotel/data/habitaciones.json'):
 def filterRules(request):
     engine = RecomendarHabitacion()
     engine.reset()
-    engine.declare(Servicio(servicio="Complementario"))
+    engine.declare(Residencia(residencia=request.GET["residencia"]),Edad(edad=request.GET["edad"]))
+    print(request.GET["residencia"])
     engine.run()
-    contenido_html='<p>lag</p>'
-    return HttpResponse(contenido_html)
+    print(engine.facts)
+    return HttpResponse('test')
 
 def cargar_habitaciones_desde_json(json_file_path):
     with open(json_file_path, 'r',encoding='utf-8') as file:
