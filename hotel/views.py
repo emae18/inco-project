@@ -22,11 +22,11 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'location':'activeh' },content_type='text/html; charset=utf-8')
 
 def filterRules(request):
-    engine = ReservarHabitacion()
+    engine = RecomendarHabitacion()
     engine.reset()
-    engine.declare(Residencia(tipo="nativo"))
+    engine.declare(Servicio(servicio="Complementario"))
     engine.run()
-    contenido_html=engine.resultados["residencia"]
+    contenido_html='<p>lag</p>'
     return HttpResponse(contenido_html)
 
 def cargar_habitaciones_desde_json(json_file_path):
