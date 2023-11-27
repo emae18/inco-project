@@ -5,6 +5,7 @@ from django.template import loader
 from reglas.rules import *
 from .models import Habitacion,Filter,RoomType
 import json
+from django.http import JsonResponse
 
 
 def index(request):
@@ -20,6 +21,11 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     load_room_types()
     roomTypes= RoomType.objects.all()
     return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'location':'activeh' },content_type='text/html; charset=utf-8')
+def GetHabitaciones(request, json_file_path='hotel/data/habitaciones.json'):
+    with open(json_file_path, 'r',encoding='utf-8') as file:
+        habitaciones_data = json.load(file)
+    data = {'data': habitaciones_data}
+    return JsonResponse(data)
 
 def filterRules(request):
     engine = RecomendarHabitacion()
