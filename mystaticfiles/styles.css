@@ -10,9 +10,16 @@
 .bgh-secondary{
     background-color: #A2C579 !important;
 }
-/* .text-truncate:hover{
-} */
+.text-truncate:hover{
+  white-space: wrap;
+overflow: scroll;
+text-overflow: none;
+} 
 
+.activeh{
+  background-color: #2EA9B0 !important;
+  font-weight: bolder;
+}
 
 select {
     /* Reset Select */
@@ -23,7 +30,7 @@ select {
     /* Personalize */
     flex: 1;
     padding: 0 1em;
-    color: #016A70;
+    color: #000000;
     background-color: var(--darkgray);
     background-image: none;
     cursor: pointer;
@@ -48,13 +55,13 @@ select {
     top: 0;
     right: 0;
     padding: 1em;
-    background-color: #D2DE32;
+    background-color: #2EA9B0;
     transition: .25s all ease;
     pointer-events: none;
   }
   /* Transition */
   .select:hover::after {
-    color: #f39c12;
+    color: #ffff;
   }
   
   

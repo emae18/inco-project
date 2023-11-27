@@ -13,19 +13,20 @@
 
 <body>
   <ul class="btn-primary nav d-flex flex-md-row justify-content-end ">
-    <li class="nav-item align-self-start me-auto">
+    <li class="nav-item d-flex flex-row  align-items-center align-self-start me-auto">
       <a class="text-white nav-link active" aria-current="page" href="/hotel"><img height="32" src="{% static 'favicon.ico' %}"/></a>
+      <p class="text-white m-0 fst-italic h-100">Relajate! Lo mereces</p>
     </li>
-    <li class="nav-item">
-      <a class="text-white nav-link active" aria-current="page" href="/hotel">Inicio</a>
+    <li class="nav-item align-items-center">
+      <a class="h-100 text-white nav-link {{location}}" style="border-radius: 0px;" aria-current="page" href="/hotel">Inicio</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item align-items-center">
       <a class="text-white nav-link" href="/hotel/reservas">Reservas</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item align-items-center">
       <a class="text-white nav-link" href="/hotel/servicios">Servicios</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item align-items-center">
       <a class=" text-white nav-link">Nosotros</a>
     </li>
   </ul>

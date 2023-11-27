@@ -8,7 +8,7 @@ import json
 
 
 def index(request):
-    return render(request, 'home.html',content_type='text/html; charset=utf-8')
+    return render(request, 'home.html',{'location':'activeh'},content_type='text/html; charset=utf-8')
 
 def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     cargar_habitaciones_desde_json(json_file_path)
@@ -19,7 +19,7 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     RoomType.objects.all().delete()
     load_room_types()
     roomTypes= RoomType.objects.all()
-    return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'titulo':'HOTEL MICA' },content_type='text/html; charset=utf-8')
+    return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'location':'activeh' },content_type='text/html; charset=utf-8')
 
 def filterRules(request):
     engine = ReservarHabitacion()

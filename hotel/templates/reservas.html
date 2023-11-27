@@ -13,34 +13,36 @@
 
 <body>
     <ul class="btn-primary nav d-flex flex-md-row justify-content-end ">
-        <li class="nav-item align-self-start me-auto">
+        <li class="nav-item d-flex flex-row align-self-start align-items-center me-auto">
             <a class="text-white nav-link active" aria-current="page" href="/hotel"><img height="32" src="{% static 'favicon.ico' %}"/></a>
+            <p class=" text-white m-0 fst-italic h-100">Relajate! Lo mereces</p>
         </li>
-        <li class="nav-item">
+        <li class="nav-item align-items-center">
             <a class="text-white nav-link active" aria-current="page" href="/hotel">Inicio</a>
         </li>
-        <li class="nav-item">
-            <a class="text-white nav-link" href="/hotel/reservas">Reservas</a>
+        <li class="nav-item align-items-center">
+            <a class="h-100 text-white nav-link {{location}}" style="border-radius: 0px;" href="/hotel/reservas">Reservas</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item align-items-center">
             <a class="text-white nav-link" href="/hotel/servicios">Servicios</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item align-items-center">
             <a class=" text-white nav-link">Nosotros</a>
         </li>
     </ul>
     <div class="d-flex flex-md-row justify-content-between w-100" style="padding: 20px;">
-        <div class="col-md-2 card">
+        <div class="col-md-2 card" style="background-color: #F8F8F8;">
             <h6 class="bgh-secondary p-1 m-0">Servicios</h6>
-            <ul class="list-group list-group-flush w-100">
+            <ul class="list-group list-group-flush w-100" >
                 {% for filter in filters %}
-                <li class="list-group-item w-100">
-                    <input class="form-check-input me-1" type="checkbox" value="" id="{{filter.name}}">
-                    <label class="text-truncate form-check-label" style="max-width: 80%;"
+                <li class="list-group-item w-100 bg-transparent" >
+                    <input class="form-check-input me-1" style=" border-color: black;" type="checkbox" value="" id="{{filter.name}}">
+                    <label class=" text-uppercase form-check-label" style="cursor: pointer;;max-width: 80%;"
                         for="{{filter.name}}">{{filter.name}}</label>
                 </li>
                 {% endfor %}
             </ul>
+            <img width="100%" class="rounded rounded-1" style="margin-top: 50%;" src="{%static 'banner.png'%}"/>
         </div>
         <div class="col-md-10 d-flex flex-column ">
             <div class="d-flex flex-row justify-content-evenly">
@@ -76,7 +78,7 @@
                             <label class="w-50">Jovenes - Adultos</label>
                             <div class="w-50 d-flex flex-md-row">
                                 <span class="btn bgh-primary border border-black" id="">-</span>
-                                <input type="text text-center" maxlength="2" class="form-control" placeholder="0"
+                                <input type="text text-center" maxlength="2" class="form-control" placeholder="2"
                                     style="width: 30%;">
                                 <span class="btn bgh-primary border border-black" id="">+</span>
                             </div>
