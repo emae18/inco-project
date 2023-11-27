@@ -24,7 +24,7 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
 def filterRules(request):
     engine = RecomendarHabitacion()
     engine.reset()
-    engine.declare(Servicio(servicio="Complementario"))
+    engine.declare(Residencia(residencia="Extranjero"), Edad(edad="joven"))
     engine.run()
     contenido_html='<p>lag</p>'
     return HttpResponse(contenido_html)
