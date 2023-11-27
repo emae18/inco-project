@@ -111,7 +111,7 @@
                         <div class="w-100 select border border-3 mt-1 rounded">
                             <select aria-placeholder="Select a Type">
                                 {% for type in roomTypes %}
-                                <option value="{{type.id}}">{{type.name}}</option>
+                                <option class="optionh" value="{{type.id}}">{{type.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -128,8 +128,8 @@
                             <h5 class="card-title">{{ habitacion.tipo }}</h5>
                         </div>
                         <div class="card-body h-75">
-                            <img style="max-width: 100%;"
-                                src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1" />
+                            <img width="100%" style="max-width: 100%;"
+                                src="{{habitacion.src}}" />
                             <p class="card-text h-auto" style="max-height: --fill-content;overflow-y: scroll;">
                                 {{ habitacion.descripcion }}</p>
                         </div>
