@@ -40,6 +40,7 @@ def filterRules(request):
     engine.reset()
     engine.declare(Residencia(residencia=request.GET["residencia"]),Edad(edad=request.GET["edad"]))
     print(request.GET["residencia"])
+    engine.declare(Tipo(tipo="Suite junior"))
     engine.run()
     print(engine.facts)
     return HttpResponse('test')

@@ -59,20 +59,20 @@ class RecomendarHabitacion(KnowledgeEngine):
         yield Habitacion(edad="joven", numero= "2041", residencia="Extranjero", tipo="Suite senior con vista panorámica" )
     
 
-    @Rule(OR (Habitacion(servicio=MATCH.s), Habitacion (residencia=MATCH.r), Habitacion(cantidad=MATCH.c), Habitacion(tipo=MATCH.t), Habitacion(numero=MATCH.n)),Servicio(servicio=MATCH.s), Residencia(residencia=MATCH.r), Cantidad(cantidad=MATCH.c), Tipo(tipo=MATCH.t))
-    def recomendación_1(self, s, r, c, t, n):
+    @Rule(OR (Habitacion(servicio=MATCH.s), Habitacion (residencia=MATCH.r), Habitacion(cantidad=MATCH.c), Habitacion(tipo=MATCH.t), Habitacion(numero=MATCH.n), Habitacion(edad=MATCH.e)),Servicio(servicio=MATCH.s), Residencia(residencia=MATCH.r), Cantidad(cantidad=MATCH.c), Tipo(tipo=MATCH.t))
+    def recomendación_1(self, s, r, c, t, n, e):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
-        self.declare(Recomendacion(servicio=s, residencia=r, cantidad=c, tipo=t, numero=n))
+        print("recomendación 1 "+ t)
+        self.declare(Recomendacion(servicio=s, residencia=r, cantidad=c, tipo=t, numero=n, edad=e))
         
-    @Rule(Habitacion(servicio=MATCH.s, numero=MATCH.n),
-          Servicio(servicio=MATCH.s))
+    @Rule(Habitacion(servicio=MATCH.s, numero=MATCH.n), Servicio(servicio=MATCH.s))
     def recomendación_2(self, s, n):
         """
         El cliente puede acceder a la habitacion con el servicio seleccionado
         """
-        print(s)
+        print("recomendación 2 "+ s)
         self.declare(Recomendacion(servicio=s, numero=n))
 
     @Rule(Habitacion(servicio=MATCH.s, residencia=MATCH.r, numero=MATCH.n),Servicio(servicio=MATCH.s), Residencia(residencia=MATCH.r))
@@ -80,6 +80,7 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
+        print("recomendación 3 "+ r)
         self.declare(Recomendacion(servicio=s, residencia=r, numero=n))
         
     @Rule(OR (Habitacion(servicio=MATCH.s), Habitacion(cantidad=MATCH.c), Habitacion(numero=MATCH.n)),Servicio(servicio=MATCH.s), Cantidad(cantidad=MATCH.c))
@@ -87,6 +88,7 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
+        print("recomendación 4 "+ n)
         self.declare(Recomendacion(servicio=s, cantidad=c, numero=n))
         
     @Rule(Habitacion(edad=MATCH.e, cantidad=MATCH.c, numero=MATCH.n), Tipo(edad=MATCH.e), Cantidad(cantidad=MATCH.c,))
@@ -94,6 +96,7 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
+        print("recomendación 5 "+ c)
         self.declare(Recomendacion(edad=e, cantidad=c, numero=n))
         
     @Rule(Habitacion(cantidad=MATCH.c, tipo=MATCH.t, numero=MATCH.n),Cantidad(cantidad=MATCH.c), Tipo(tipo=MATCH.t))
@@ -101,13 +104,15 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
+        print("recomendación 7 "+ t)
         self.declare(Recomendacion(cantidad=c, tipo=t, numero=n))
         
-    @Rule(OR (Habitacion(residencia=MATCH.r),Habitacion(tipo=MATCH.t), Habitacion(numero=MATCH.n)),Residencia(residencia=MATCH.r), Tipo(tipo=MATCH.t))
+    @Rule(OR (Habitacion(residencia=MATCH.r), Habitacion(tipo=MATCH.t), Habitacion(numero=MATCH.n)),Residencia(residencia=MATCH.r), Tipo(tipo=MATCH.t))
     def recomendación_7(self, r,t,n):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
+        print("recomendación 7 "+ t)
         self.declare(Recomendacion(residencia=r, tipo=t,numero=n))
     
     
@@ -116,7 +121,7 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente puede acceder a la habitacion con el servicio seleccionado
         """
-        print(t)
+        print("recomendación 8 "+ t)
         self.declare(Recomendacion(recidencia=r, edad=e,tipo=t, numero=n))
     
     @Rule(Habitacion(tipo=MATCH.t, numero=MATCH.n), Tipo(tipo=MATCH.t))
@@ -124,5 +129,10 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente puede acceder a la habitacion con el servicio seleccionado
         """
+<<<<<<< HEAD
         print(t)
         self.declare(Recomendacion(tipo=t, numero=n))
+=======
+        print("recomendación 9 "+ t)
+        self.declare(Recomendacion(tipo=t, numero=n))
+>>>>>>> 108e2c06b82360949c279f86bf9598d712541c5d
