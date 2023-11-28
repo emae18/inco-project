@@ -112,26 +112,26 @@
         <div class="d-flex flex-row justify-content-start w-100 mt-2">
             <div class="vr mx-2"></div>
             <div class="card-deck d-flex flex-row flex-wrap justify-content-evenly g-3">
-                @foreach (var habitacion in habitacionesMostrar)
+                @for(int i=0;i<habitacionesMostrar.Count ; i++)
                 {
-                    <div>
-                        <div class="card mb-4" style="max-width: 400px;max-height: 500px;">
-                            <div class="card-header">
-                                <h5 class="card-title">@habitacion.tipo</h5>
-                            </div>
-                            <div class="card-body h-75">
-                                <img width="100%" style="max-width: 100%;"
-                                     src="@habitacion.src" />
-                                <p class="card-text h-auto" style="max-height: --fill-content;overflow-y: scroll;">
-                                    @habitacion.descripcion
-                                </p>
-                            </div>
-                            <div class="card-footer d-flex flex-row justify-content-end">
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">RESERVAR</a>
-                            </div>
+                    <div class="card mb-4" style="max-width: 400px;max-height: 500px;">
+                        <div class="card-header d-flex flex-row justify-content-between">
+                            <h5 class="card-title">@habitacionesMostrar[i].tipo</h5>
+                            @if (i==0)
+                            {
+                                <span class="badge text-bg-primary text-center h-75">Recomendada</span>
+                            }
                         </div>
-                        <div class="vr"></div>
-                        <hr style="width:100%;text-align:left;margin-left:0; margin-top:2px;">
+                        <div class="card-body h-75">
+                            <img width="100%" style="max-width: 100%;"
+                                 src="@habitacionesMostrar[i].src" />
+                            <p class="card-text h-auto" style="max-height: --fill-content;overflow-y: scroll;">
+                                @habitacionesMostrar[i].descripcion
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex flex-row justify-content-end">
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">RESERVAR</a>
+                        </div>
                     </div>
                 }
             </div>
