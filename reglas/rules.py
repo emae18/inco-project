@@ -6,8 +6,12 @@ class Servicio(Fact):
     """ Inicializar la clase servicio """
     pass
 
+class Bandera(Fact):
+    """ Inicializar la clase bandera """
+    pass
+
 class Residencia(Fact):
-    """ Inicializar la clase recidencia """
+    """ Inicializar la clase residencia """
     pass
 class Cantidad(Fact):
     """ Inicializar la clase cantidad"""
@@ -35,101 +39,89 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         Hechos iniciales.
         """
-        yield Habitacion(servicio="Complementario", numero= "101", residencia="Nativo", cantidad="1", tipo="Single" )
-        yield Habitacion(servicio="Complementario", numero= "201", residencia="Nativo", cantidad="2", tipo="Single doble" )
-        yield Habitacion(servicio="Complementario", numero= "2011", residencia="Nativo", cantidad="4", tipo="Single cuádruple" )
-        yield Habitacion(servicio="Complementario", numero= "2021", residencia="Nativo", cantidad="5", tipo="Single quíntuple" )
-        yield Habitacion(servicio="2 ambientes", numero= "2031", residencia="Nativo", tipo="Suite junior" )
-        yield Habitacion(servicio="Jacuzzi con hidromasaje", numero= "2031", residencia="Nativo", tipo="Suite junior" )
-        yield Habitacion(servicio="2 ambientes", numero= "2041", residencia="Nativo", tipo="Suite senior" )
-        yield Habitacion(servicio="Jacuzzi con hidromasaje", numero= "2041", residencia="Nativo", tipo="Suite senior" )
-        yield Habitacion(servicio="Vista panoramica", numero= "2041", residencia="Nativo", tipo="Suite senior" )
+        yield Habitacion(numero= "101", cantidad="1", edad="joven", tipo="Single" )
+        yield Habitacion(numero= "2041", cantidad="1", edad="joven", tipo="Suite senior sin vista panorámica" )
+        yield Habitacion(numero= "2015", cantidad="1", edad="joven", tipo="Suite senior con vista panorámica" )
+        yield Habitacion(numero= "2031", cantidad="1", edad="joven", tipo="Suite junior" )
 
-        yield Habitacion(servicio="Complementario", numero= "101", residencia="Extranjero", cantidad="1", tipo="Single" )
-        yield Habitacion(servicio="Complementario", numero= "201", residencia="Extranjero", cantidad="2", tipo="Single doble" )
-        yield Habitacion(servicio="Complementario", numero= "2011", residencia="Extranjero", cantidad="4", tipo="Single cuádruple" )
-        yield Habitacion(servicio="Complementario", numero= "2021", residencia="Extranjero", cantidad="5", tipo="Single quíntuple" )
-        yield Habitacion(servicio="2 ambientes", numero= "2031", residencia="Extranjero", tipo="Suite junior" )
-        yield Habitacion(servicio="Jacuzzi con hidromasaje", numero= "2031", residencia="Extranjero", tipo="Suite junior" )
-        yield Habitacion(servicio="2 ambientes", numero= "2041", residencia="Extranjero", tipo="Suite senior" )
-        yield Habitacion(servicio="Jacuzzi con hidromasaje", numero= "2041", residencia="Extranjero", tipo="Suite senior" )
-        yield Habitacion(servicio="Vista panoramica", numero= "2041", residencia="Extranjero", tipo="Suite senior" )
+        yield Habitacion(numero= "201", cantidad="2", edad="joven", tipo="Single doble" )
+        yield Habitacion(numero= "2031", cantidad="2", edad="joven", tipo="Suite junior" )
+        yield Habitacion(numero= "2041", cantidad="2", edad="joven", tipo="Suite senior" )
+        yield Habitacion(numero= "2015", cantidad="2", edad="joven", tipo="Suite senior" )
+        
+        yield Habitacion(numero= "2011", cantidad="4", edad="joven", tipo="Single cuádruple" )
+        yield Habitacion(numero= "2021", cantidad="5", edad="joven", tipo="Single quíntuple" )
 
-        yield Habitacion(edad="adulto", numero= "2041", residencia="Extranjero", tipo="Suite senior con vista panorámica" )
-        yield Habitacion(edad="joven", numero= "2041", residencia="Extranjero", tipo="Suite senior con vista panorámica" )
-        yield Habitacion(edad="adulto", numero= "2041", residencia="Nativo", tipo="Suite senior con vista panorámica" )
-        yield Habitacion(edad="joven", numero= "2041", residencia="Nativo", tipo="Suite senior con vista panorámica" )
+        yield Habitacion(numero= "101", cantidad="1", edad="adulto", tipo="Single" )
+        yield Habitacion(numero= "2041", cantidad="1", edad="adulto", tipo="Suite senior sin vista panorámica" )
+        yield Habitacion(numero= "2015", cantidad="1", edad="adulto", tipo="Suite senior con vista panorámica" )
+
+        yield Habitacion(numero= "201", cantidad="2", edad="adulto", tipo="Single doble" )
+        yield Habitacion(numero= "2031", cantidad="2", edad="adulto", tipo="Suite junior" )
+        yield Habitacion(numero= "2041", cantidad="2", edad="adulto", tipo="Suite senior" )
+        yield Habitacion(numero= "2015", cantidad="2", edad="adulto", tipo="Suite senior" )
+        
+        yield Habitacion(numero= "2011", cantidad="4", edad="adulto", tipo="Single cuádruple" )
+        yield Habitacion(numero= "2021", cantidad="5", edad="adulto", tipo="Single quíntuple" )
+
+        yield Habitacion(numero= "2041", residencia="Nativo", cantidad="1", tipo="Suite senior sin vista panorámica" )
+        yield Habitacion(numero= "2041", residencia="Nativo", cantidad="2", tipo="Suite senior sin vista panorámica" )
+        yield Habitacion(numero= "2015", residencia="Extranjero", cantidad="1", tipo="Suite senior con vista panorámica" )
+        yield Habitacion(numero= "2015", residencia="Extranjero", cantidad="2", tipo="Suite senior con vista panorámica" )
+
+        yield Habitacion(numero= "101", tipo="Single" )
+        yield Habitacion(numero= "201", tipo="Single doble" )
+        yield Habitacion(numero= "2011", tipo="Single cuádruple" )
+        yield Habitacion(numero= "2021", tipo="Single quíntuple" )
+        yield Habitacion(numero= "2031", tipo="Suite junior" )
+        yield Habitacion(numero= "2041", tipo="Suite senior sin vista panorámica" )
+        yield Habitacion(numero= "2015", tipo="Suite senior con vista panorámica" )
+    
+        yield Habitacion(numero= "101", servicio="Complementario", cantidad="1", tipo="Single" )
+        yield Habitacion(numero= "201", servicio="Complementario", cantidad="2", tipo="Single doble" )
+        yield Habitacion(numero= "2011", servicio="Complementario", cantidad="4", tipo="Single cuádruple" )
+        yield Habitacion(numero= "2021", servicio="Complementario", cantidad="5", tipo="Single quíntuple" )
+        yield Habitacion(numero= "2031", servicio="Jacuzzi con hidromasajes", cantidad="1", tipo="Suite junior" )
+        yield Habitacion(numero= "2031", servicio="2 ambientes", cantidad="2", tipo="Suite junior" )
+        yield Habitacion(numero= "2041", servicio="2 ambientes", cantidad="1", tipo="Suite senior" )
+        yield Habitacion(numero= "2041", servicio="Vista panorámica", cantidad="2", tipo="Suite senior" )
+        yield Habitacion(numero= "2015", servicio="Vista panorámica", cantidad="1", tipo="Suite senior" )
+        yield Habitacion(numero= "2015", servicio="2 ambientes", cantidad="2", tipo="Suite senior" )
     
 
-    @Rule(Habitacion (residencia=MATCH.r, cantidad=MATCH.c, numero=MATCH.n, edad=MATCH.e),Residencia(residencia=MATCH.r), Cantidad(cantidad=MATCH.c), Edad(edad=MATCH.e))
-    def recomendación_1(self, r, c, n, e):
+        
+    
+    @Rule(Habitacion (residencia=MATCH.r, cantidad=MATCH.c, numero=MATCH.n), Residencia(residencia=MATCH.r), Cantidad(cantidad=MATCH.c))
+    def recomendación_2(self, r, c, n):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
-        print("recomendación 1 "+ t)
-        self.declare(Recomendacion(residencia=r, cantidad=c, numero=n, edad=e))
+        print("recomendación 2 "+ n)
+        self.declare(Recomendacion(residencia=r, cantidad=c, numero=n))
+
+    @Rule(Habitacion (tipo=MATCH.t, numero=MATCH.n), Tipo(tipo=MATCH.t))
+    def recomendación_3(self, t, n):
+        """
+        El cliente solo puede acceder a habitaciones según sus preferencias
+        """
+        print("recomendación 3 "+ n)
+        self.declare(Recomendacion(tipo=t, numero=n))
+        self.halt()
         
-    @Rule(Habitacion(servicio=MATCH.s, numero=MATCH.n), Servicio(servicio=MATCH.s))
-    def recomendación_2(self, s, n):
+    @Rule(Habitacion(servicio=MATCH.s, cantidad=MATCH.c, numero=MATCH.n), Servicio(servicio=MATCH.s),Cantidad(cantidad=MATCH.c))
+    def recomendación_4(self, s, n):
         """
         El cliente puede acceder a la habitacion con el servicio seleccionado
-        """
-        print("recomendación 2 "+ s)
-        self.declare(Recomendacion(servicio=s, numero=n))
-
-    @Rule(Habitacion(servicio=MATCH.s, residencia=MATCH.r, numero=MATCH.n),Servicio(servicio=MATCH.s), Residencia(residencia=MATCH.r))
-    def recomendación_3(self, s, r, n):
-        """
-        El cliente solo puede acceder a habitaciones según sus preferencias
-        """
-        print("recomendación 3 "+ r)
-        self.declare(Recomendacion(servicio=s, residencia=r, numero=n))
-        
-    @Rule(OR (Habitacion(servicio=MATCH.s), Habitacion(cantidad=MATCH.c), Habitacion(numero=MATCH.n)),Servicio(servicio=MATCH.s), Cantidad(cantidad=MATCH.c))
-    def recomendación_4(self, s, c, n):
-        """
-        El cliente solo puede acceder a habitaciones según sus preferencias
         """
         print("recomendación 4 "+ n)
-        self.declare(Recomendacion(servicio=s, cantidad=c, numero=n))
-        
-    @Rule(Habitacion(edad=MATCH.e, cantidad=MATCH.c, numero=MATCH.n), Edad(edad=MATCH.e), Cantidad(cantidad=MATCH.c,))
-    def recomendación_5(self, e, c, n):
+        self.declare(Recomendacion(servicio=s, numero=n))
+        self.halt()
+
+    @Rule(Habitacion (cantidad=MATCH.c, numero=MATCH.n, edad=MATCH.e), Cantidad(cantidad=MATCH.c), Edad(edad=MATCH.e) )
+    def recomendación_1(self, c, n, e):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
-        print("recomendación 5 "+ c)
-        self.declare(Recomendacion(edad=e, cantidad=c, numero=n))
+        print("recomendación 1 "+ n)
+        self.declare(Recomendacion(cantidad=c, numero=n, edad=e))
         
-    @Rule(Habitacion(cantidad=MATCH.c, tipo=MATCH.t, numero=MATCH.n),Cantidad(cantidad=MATCH.c), Tipo(tipo=MATCH.t))
-    def recomendación_6(self, c, t, n):
-        """
-        El cliente solo puede acceder a habitaciones según sus preferencias
-        """
-        print("recomendación 6 "+ t)
-        self.declare(Recomendacion(cantidad=c, tipo=t, numero=n))
-        
-    @Rule((Habitacion(residencia=MATCH.r,tipo=MATCH.t,numero=MATCH.n)),Residencia(residencia=MATCH.r), Tipo(tipo=MATCH.t))
-    def recomendación_7(self, r,t,n):
-        """
-        El cliente solo puede acceder a habitaciones según sus preferencias
-        """
-        print("recomendación 7 "+ t)
-        self.declare(Recomendacion(residencia=r, tipo=t,numero=n))
-    
-    
-    @Rule(Habitacion(residencia=MATCH.r, edad=MATCH.e, tipo=MATCH.t, numero=MATCH.n), Residencia(residencia=MATCH.r), Edad(edad=MATCH.e))
-    def recomendación_8(self, r, e, t, n):
-        """
-        El cliente puede acceder a la habitacion con el servicio seleccionado
-        """
-        print("recomendación 8 "+ t)
-        self.declare(Recomendacion(residencia=r, edad=e,tipo=t, numero=n))
-    
-    @Rule(Habitacion(tipo=MATCH.t, numero=MATCH.n), Tipo(tipo=MATCH.t))
-    def recomendación_9(self, t, n):
-        """
-        El cliente puede acceder a la habitacion con el servicio seleccionado
-        """
-        print("recomendación 9 "+ t)
-        self.declare(Recomendacion(tipo=t, numero=n))

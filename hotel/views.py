@@ -41,7 +41,8 @@ def filterRules(request):
     engine.declare(Residencia(residencia=request.GET["residencia"]),
                    Edad(edad=request.GET["edad"]),
                    Cantidad(cantidad=request.GET["cantidad"]),
-                   Tipo(tipo=(request.GET["tipo"] if request.GET.get("tipo")!=None else "")))
+                   Tipo(tipo=(request.GET["tipo"] if request.GET.get("tipo")!=None else "")),
+                   Servicio(servicio=request.GET["servicio"] if request.GET.get("servicio")!=None else ""))
     engine.run()
     print(engine.facts)
     hechos_recomendacion = [fact for fact in engine.facts.values() if isinstance(fact, Recomendacion)]

@@ -232,7 +232,7 @@
         foreach (var item in habRecomendadas.data)
         {
             var hab = habitaciones.FirstOrDefault(h => h.numero == item.numero);
-            if (hab is not null && !habitacionesMostrar.Any(p => hab.numero == p.numero))
+            if (hab is not null)
             {
                 habitacionesMostrar.Add(hab);
             }

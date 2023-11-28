@@ -58,7 +58,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
     "http://localhost:8080",
     "http://127.0.0.1:9000",
-    "https://localhost:7128"
+    "https://localhost:7128",
+    "http://localhost:5273"
 ]
 APPEND_SLASH = True
 
