@@ -61,13 +61,13 @@ class RecomendarHabitacion(KnowledgeEngine):
         yield Habitacion(edad="joven", numero= "2041", residencia="Nativo", tipo="Suite senior con vista panorámica" )
     
 
-    @Rule(OR (Habitacion (residencia=MATCH.r), Habitacion(cantidad=MATCH.c), Habitacion(tipo=MATCH.t), Habitacion(numero=MATCH.n), Habitacion(edad=MATCH.e)),Servicio(servicio=MATCH.s), Residencia(residencia=MATCH.r), Cantidad(cantidad=MATCH.c), Tipo(tipo=MATCH.t), Edad(edad=MATCH.e))
-    def recomendación_1(self, r, c, t, n, e):
+    @Rule(Habitacion (residencia=MATCH.r, cantidad=MATCH.c, numero=MATCH.n, edad=MATCH.e),Residencia(residencia=MATCH.r), Cantidad(cantidad=MATCH.c), Edad(edad=MATCH.e))
+    def recomendación_1(self, r, c, n, e):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
         print("recomendación 1 "+ t)
-        self.declare(Recomendacion(residencia=r, cantidad=c, tipo=t, numero=n, edad=e))
+        self.declare(Recomendacion(residencia=r, cantidad=c, numero=n, edad=e))
         
     @Rule(Habitacion(servicio=MATCH.s, numero=MATCH.n), Servicio(servicio=MATCH.s))
     def recomendación_2(self, s, n):
