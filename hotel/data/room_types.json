@@ -3,6 +3,7 @@
     {"id":"2","name":"Single doble"},
     {"id":"3","name":"Single cuádruple"},
     {"id":"4","name":"Single quíntuple"},
-    {"id":"5","name":"Suite senior con panorámica"},
-    {"id":"6","name":"Suite senior sin panorámica"}
+    {"id":"5","name":"Suite junior"},
+    {"id":"6","name":"Suite senior con panorámica"},
+    {"id":"7","name":"Suite senior sin panorámica"}
 ]

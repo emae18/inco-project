@@ -5,6 +5,7 @@ from django.template import loader
 from reglas.rules import *
 from .models import Habitacion,Filter,RoomType
 import json
+from django.http import JsonResponse
 
 
 def index(request):
@@ -21,13 +22,31 @@ def reservas(request, json_file_path='hotel/data/habitaciones.json'):
     roomTypes= RoomType.objects.all()
     return render(request, 'reservas.html', {'habitaciones': habitaciones, "filters":filters,"roomTypes":roomTypes,'location':'activeh' },content_type='text/html; charset=utf-8')
 
+
+def GetHabitaciones(request, json_file_path='hotel/data/habitaciones.json'):
+    with open(json_file_path, 'r',encoding='utf-8') as file:
+        habitaciones_data = json.load(file)
+    data = {'data': habitaciones_data}
+    return JsonResponse(data)
+
+def GetTiposHab(request, json_file_path='hotel/data/room_types.json'):
+    with open(json_file_path, 'r',encoding='utf-8') as file:
+        habitaciones_data = json.load(file)
+    data = {'data': habitaciones_data}
+    return JsonResponse(data)
+
 def filterRules(request):
     engine = RecomendarHabitacion()
     engine.reset()
-    engine.declare(Tipo(tipo="Suite junior"))
+    engine.declare(Residencia(residencia=request.GET["residencia"]),
+                   Edad(edad=request.GET["edad"]),
+                   Cantidad(cantidad=request.GET["cantidad"]),
+                   Tipo(tipo=(request.GET["tipo"] if request.GET.get("tipo")!=None else "")))
     engine.run()
-    contenido_html='<p>lag</p>'
-    return HttpResponse(contenido_html)
+    print(engine.facts)
+    hechos_recomendacion = [fact for fact in engine.facts.values() if isinstance(fact, Recomendacion)]
+    data = {'data': hechos_recomendacion}
+    return JsonResponse(data)
 
 def cargar_habitaciones_desde_json(json_file_path):
     with open(json_file_path, 'r',encoding='utf-8') as file:
