@@ -223,7 +223,7 @@
         if (!string.IsNullOrEmpty(SelectType))
             urlBase += $"&tipo={SelectType}";
         urlBase += $"&cantidad={cantAdultos + cantAdultosMayores}";
-        servicios += $"&servicio={servicios}";
+        urlBase += $"&servicio={servicios}";
         var response = await Http.GetAsync(urlBase);
         var contentResponse = await response.Content.ReadAsStringAsync();
         var habRecomendadas = JsonConvert.DeserializeObject<ResponseDjango<Recomendacion>>(contentResponse);
@@ -235,9 +235,9 @@
             if (hab is not null && !habitacionesMostrar.Any(p => hab.numero == p.numero))
             {
                 habitacionesMostrar.Add(hab);
-                habitacionesMostrar.Reverse();
             }
         }
+        habitacionesMostrar.Reverse();
         StateHasChanged();
     }
 
