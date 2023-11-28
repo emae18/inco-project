@@ -1,0 +1,64 @@
+[
+    {
+        "numero": 101,
+        "tipo": "Single",
+        "descripcion": "Habitación individual con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
+        "precio_por_noche": 100.0,
+        "disponible": true,
+        "src":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1"
+    },
+    {
+        "numero": 201,
+        "tipo": "Single doble",
+        "descripcion": "Habitación para dos personas con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
+        "precio_por_noche": 150.0,
+        "disponible": true,
+        "src":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1"
+
+    },
+    {
+        "numero": 2011,
+        "tipo": "Single cuádruple",
+        "descripcion": "Habitación para cuatro personas con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
+        "precio_por_noche": 150.0,
+        "disponible": true,
+        "src":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1"
+
+    },
+    {
+        "numero": 2021,
+        "tipo": "Single quíntuple",
+        "descripcion": "Habitación para cinco personas con servicios complementarios, estos incluyen; piscina termal, sauna, masajes, restaurante.",
+        "precio_por_noche": 150.0,
+        "disponible": true,
+        "src":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/382824283.jpg?k=3d6a38d274d0e4189a47c6e8b160392db01d71a61d907e8633f5758169190c68&o=&hp=1"
+
+    },
+    {
+        "numero": 2031,
+        "tipo": "Suite junior",
+        "descripcion": "Habitación con servicio de jacuzzi con hidromasaje, 2 ambientes. Incluye los servicios complentarios.",
+        "precio_por_noche": 150.0,
+        "disponible": true,
+        "src":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdQmL1M5TnLPUAYENTKDwcHdrvXi9IwKuzzg&usqp=CAU"
+
+    },
+    {
+        "numero": 2041,
+        "tipo": "Suite senior sin vista panorámica",
+        "descripcion": "Habitación con servicio de jacuzzi con hidromasaje, 2 ambientes. Incluye los servicios complentarios.",
+        "precio_por_noche": 150.0,
+        "disponible": true,
+        "src":"https://www.caminandoelmundoblog.com/wp-content/uploads/2021/12/Habitacion-Suite-Panoramica-2.jpg"
+
+    },
+    {
+        "numero": 2015,
+        "tipo": "Suite senior con vista panorámica",
+        "descripcion": "Habitación con servicio de jacuzzi con hidromasaje, 2 ambientes. Incluye los servicios complentarios.",
+        "precio_por_noche": 150.0,
+        "disponible": true,
+        "src":"https://www.caminandoelmundoblog.com/wp-content/uploads/2021/12/Habitacion-Suite-Panoramica-2.jpg"
+
+    }
+]

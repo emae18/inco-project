@@ -1,0 +1,259 @@
+﻿@page "/reservas"
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq
+@inject HttpClient Http
+<ul class="btn-primary nav d-flex flex-md-row justify-content-end ">
+    <li class="nav-item d-flex flex-row align-self-start align-items-center me-auto">
+        <a class="text-white nav-link active" aria-current="page" href="/hotel"><img height="32" src="favicon.ico" /></a>
+        <p class=" text-white m-0 fst-italic h-100">Relajate! Lo mereces</p>
+    </li>
+    <li class="nav-item align-items-center">
+        <a class="text-white nav-link active" aria-current="page" href="/">Inicio</a>
+    </li>
+    <li class="nav-item align-items-center">
+        <a class="h-100 text-white nav-link activeh" style="border-radius: 0px;" href="/reservas">Reservas</a>
+    </li>
+    <li class="nav-item align-items-center">
+        <a class="text-white nav-link" href="/hotel/servicios">Servicios</a>
+    </li>
+    <li class="nav-item align-items-center">
+        <a class=" text-white nav-link">Nosotros</a>
+    </li>
+</ul>
+<div class="d-flex flex-md-row justify-content-between w-100" style="padding: 20px;">
+    <div class="col-md-2 card" style="background-color: #F8F8F8;">
+        <h6 class="bgh-secondary p-1 m-0">Servicios</h6>
+        <ul class="list-group list-group-flush w-100">
+            @foreach (var filter in filters)
+            {
+                <li class="list-group-item w-100 bg-transparent">
+                    <input class="form-check-input me-1" style=" border-color: black;" type="checkbox" value="" id="@filter.Name" @onclick="@MakeRequest">
+                    <label class=" text-uppercase form-check-label" style="cursor: pointer;;max-width: 80%;"
+                           for="@filter.Name">@filter.Name</label>
+                </li>
+            }
+        </ul>
+        <img width="100%" class="rounded rounded-1" style="margin-top: 50%;" src="banner.png" />
+    </div>
+    <div class="col-md-10 d-flex flex-column ">
+        <div class="d-flex flex-row justify-content-evenly">
+            <div class="col-md-2  d-flex flex-column justify-content-start align-items-center">
+                <div class="" style="width: 80%;">
+                    <h6 class="bgh-secondary p-1 m-0">Residencia</h6>
+                    <div class="form-check">
+                        <input @onclick="@(()=>{residencia="Nativo"; MakeRequest();})" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Nativo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input @onclick="@(()=>{residencia="Exterior"; MakeRequest();})" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                               checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Exterior
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input @onclick="@(()=>{residencia="Extranjero"; MakeRequest();})" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                               checked>
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Extranjero
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-1 d-flex flex-column justify-content-start align-items-center">
+                <div style="width: 80%;">
+                    <h6 class="bgh-secondary p-1 m-0">Cantidad</h6>
+                    <div class="input-group ms-1 mb-1 w-100 d-flex flex-md-row justify-content-between">
+                        <label class="w-50">Jovenes - Adultos</label>
+                        <div class="w-50 d-flex flex-md-row">
+                            <span class="btn bgh-primary border border-black" id="" onclick="@(()=>{cantAdultos--;MakeRequest();})">-</span>
+                            <input type="text text-center" maxlength="2" class="form-control" placeholder="2"
+                                   style="width: 30%;" @bind-value="@cantAdultos">
+                            <span class="btn bgh-primary border border-black" id="" onclick="@(()=>{cantAdultos++;MakeRequest();})">+</span>
+                        </div>
+                    </div>
+                    <div class="input-group ms-1 mb-1 w-100 d-flex flex-md-row justify-content-between">
+                        <label class="w-50">Adultos mayores</label>
+                        <div class="w-50 d-flex flex-md-row">
+                            <span class="btn bgh-primary border border-black" id="" onclick="@(()=>{cantAdultosMayores--;MakeRequest();})">-</span>
+                            <input type="text" maxlength="2" class="form-control" placeholder="0"
+                                   style="width: 30%;" @bind-value="@cantAdultosMayores">
+                            <span class="btn bgh-primary border border-black" id="" onclick="@(()=>{cantAdultosMayores++;MakeRequest();})">+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex flex-column justify-content-start align-items-center">
+                <div class="" style="width: 80%;">
+                    <h6 class="bgh-secondary p-1 m-0">Precio</h6>
+                    <div class="input-group mb-3 d-flex flex-column">
+                        <input type="text" maxlength="10" class="form-control w-100" placeholder="Desde"
+                               aria-label="Username">
+                        <input type="text" maxlength="10" class="form-control w-100" placeholder="Hasta"
+                               aria-label="Server">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h6 class="bgh-secondary p-1 m-0">Tipo de habitación</h6>
+                    <div class="w-100 select border border-3 mt-1 rounded">
+                        <select aria-placeholder="Select a Type" onchange="@((ChangeEventArgs e)=>{SelectType=e.Value.ToString();MakeRequest();})">
+                            @foreach (var type in roomTypes)
+                            {
+                                <option class="optionh" value="@type.name">@type.name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h6 class="bgh-secondary p-1 ms-3 w-100">Habitaciones</h6>
+        <div class="d-flex flex-row justify-content-start w-100 mt-2">
+            <div class="vr mx-2"></div>
+            <div class="card-deck d-flex flex-row flex-wrap justify-content-evenly g-3">
+                @foreach (var habitacion in habitacionesMostrar)
+                {
+                    <div class="card mb-4" style="max-width: 400px;max-height: 500px;">
+                        <div class="card-header">
+                            <h5 class="card-title">@habitacion.tipo</h5>
+                        </div>
+                        <div class="card-body h-75">
+                            <img width="100%" style="max-width: 100%;"
+                                 src="@habitacion.src" />
+                            <p class="card-text h-auto" style="max-height: --fill-content;overflow-y: scroll;">
+                                @habitacion.descripcion
+                            </p>
+                        </div>
+                        <div class="card-footer d-flex flex-row justify-content-end">
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">RESERVAR</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            @if (!habitaciones.Any())
+            {
+                <p class="mt-4">No hay habitaciones disponibles en este momento.</p>
+            }
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Reservación Exitosa</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Se ha reservado su habitación
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Gracias</button>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    public class Filter
+    {
+        public string Name { get; set; }
+        public Filter()
+        {
+
+        }
+    }
+    public class Tipo
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+    }
+    public class Habitacion
+    {
+        public string numero { get; set; }
+        public string tipo { get; set; }
+        public string descripcion { get; set; }
+        public string precio_por_noche { get; set; }
+        public bool disponible { get; set; }
+        public string src { get; set; }
+    }
+    private int cantAdultos = 1;
+    private int cantAdultosMayores = 0;
+    private string residencia = "";
+    private string edad = "";
+    private List<Filter> filters = new();
+    private List<Habitacion> habitaciones = new();
+    private List<Habitacion> habitacionesMostrar = new();
+    private List<Tipo> roomTypes = new();
+    private string SelectType = string.Empty;
+    protected override async Task OnInitializedAsync()
+    {
+        var fileData = await Http.GetAsync("http://127.0.0.1:8000/hotel/habitaciones");
+        var data = await fileData.Content.ReadAsStringAsync();
+        var model = JsonConvert.DeserializeObject<ResponseDjango<Habitacion>>(data);
+        habitaciones.AddRange(model.data);
+        habitacionesMostrar.AddRange(habitaciones);
+        var fileDataTypes = await Http.GetAsync("http://127.0.0.1:8000/hotel/tipos");
+        var dataTypes = await fileDataTypes.Content.ReadAsStringAsync();
+        var modelTipos = JsonConvert.DeserializeObject<ResponseDjango<Tipo>>(dataTypes);
+        roomTypes.Add(new Tipo() { name = "Seleccione un Tipo" });
+        roomTypes.AddRange(modelTipos.data);
+
+    }
+    protected override void OnInitialized()
+    {
+        filters.Add(new() { Name = "Complementarios (piscina termal, sauna, masajes, restaurante)" });
+        filters.Add(new() { Name = "Vista panorámica" });
+        filters.Add(new() { Name = "2 ambientes" });
+        filters.Add(new() { Name = "Jacuzzi con hidromasajes" });
+    }
+
+    public async Task MakeRequest()
+    {
+        string urlBase = "http://127.0.0.1:8000/hotel/search";
+        urlBase += $"?residencia={residencia}";
+        if (cantAdultosMayores > cantAdultos)
+            edad = "adulto";
+        else
+            edad = "joven";
+        urlBase += $"&edad={edad}";
+        if (!string.IsNullOrEmpty(SelectType))
+            urlBase += $"&tipo={SelectType}";
+        urlBase += $"&cantidad={cantAdultos + cantAdultosMayores}";
+        var response = await Http.GetAsync(urlBase);
+        var contentResponse = await response.Content.ReadAsStringAsync();
+        var habRecomendadas = JsonConvert.DeserializeObject<ResponseDjango<Recomendacion>>(contentResponse);
+        habitacionesMostrar.Clear();
+        Console.WriteLine(contentResponse);
+        foreach (var item in habRecomendadas.data)
+        {
+            var hab = habitaciones.FirstOrDefault(h => h.numero == item.numero);
+            if (hab is not null)
+                habitacionesMostrar.Add(hab);
+        }
+        StateHasChanged();
+    }
+
+    public class Recomendacion
+    {
+        public string servicio { get; set; }
+        public string residencia { get; set; }
+        public string cantidad { get; set; }
+        public string tipo { get; set; }
+        public string numero { get; set; }
+        public string edad { get; set; }
+    }
+
+
+
+    public class ResponseDjango<T>()
+    {
+        public string key { get; set; }
+        public List<T> data { get; set; }
+    }
+
+}
