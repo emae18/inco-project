@@ -38,12 +38,15 @@ def GetTiposHab(request, json_file_path='hotel/data/room_types.json'):
 def filterRules(request):
     engine = RecomendarHabitacion()
     engine.reset()
-    engine.declare(Residencia(residencia=request.GET["residencia"]),Edad(edad=request.GET["edad"]))
-    # print(request.GET["residencia"])
-    # engine.declare(Tipo(tipo="Suite junior"))
+    engine.declare(Residencia(residencia=request.GET["residencia"]),
+                   Edad(edad=request.GET["edad"]),
+                   Cantidad(cantidad=request.GET["cantidad"]),
+                   Tipo(tipo=(request.GET["tipo"] if request.GET.get("tipo")!=None else "")))
     engine.run()
     print(engine.facts)
-    return HttpResponse('test')
+    hechos_recomendacion = [fact for fact in engine.facts.values() if isinstance(fact, Recomendacion)]
+    data = {'data': hechos_recomendacion}
+    return JsonResponse(data)
 
 def cargar_habitaciones_desde_json(json_file_path):
     with open(json_file_path, 'r',encoding='utf-8') as file:

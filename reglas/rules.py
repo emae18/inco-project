@@ -104,10 +104,10 @@ class RecomendarHabitacion(KnowledgeEngine):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
         """
-        print("recomendación 7 "+ t)
+        print("recomendación 6 "+ t)
         self.declare(Recomendacion(cantidad=c, tipo=t, numero=n))
         
-    @Rule(OR (Habitacion(residencia=MATCH.r), Habitacion(tipo=MATCH.t), Habitacion(numero=MATCH.n)),Residencia(residencia=MATCH.r), Tipo(tipo=MATCH.t))
+    @Rule((Habitacion(residencia=MATCH.r,tipo=MATCH.t,numero=MATCH.n)),Residencia(residencia=MATCH.r), Tipo(tipo=MATCH.t))
     def recomendación_7(self, r,t,n):
         """
         El cliente solo puede acceder a habitaciones según sus preferencias
